@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schema relationnel - SAE Drive</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f7fb;
+      color: #172033;
+    }
+
+    header {
+      padding: 18px 28px;
+      background: #2f5f95;
+      color: white;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    main {
+      padding: 24px;
+    }
+
+    .diagram {
+      overflow: auto;
+      min-height: 680px;
+      padding: 20px;
+      background: white;
+      border: 1px solid #d8dee9;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Schema relationnel - gestion d'un Drive</h1>
+  </header>
+
+  <main>
+    <div class="diagram">
+      <pre class="mermaid">
+erDiagram
+    CATEGORIE ||--o{ PRODUIT : contient
+    CLIENT ||--o{ COMMANDE : passe
+    COMMANDE ||--o{ LIGNE_COMMANDE : contient
+    PRODUIT ||--o{ LIGNE_COMMANDE : est_commande
+
+    CATEGORIE {
+        int id PK
+        varchar nom
+        text descriptif
+    }
+
+    PRODUIT {
+        int id PK
+        varchar nom
+        date date_peremption
+        varchar photo
+        varchar marque
+        decimal prix
+        int categorie_id FK
+    }
+
+    CLIENT {
+        int id PK
+        varchar nom
+        varchar prenom
+        date date_inscription
+        varchar adresse
+    }
+
+    COMMANDE {
+        int numero PK
+        int client_id FK
+        datetime date_commande
+    }
+
+    LIGNE_COMMANDE {
+        int commande_numero PK,FK
+        int produit_id PK,FK
+        int quantite
+    }
+      </pre>
+    </div>
+  </main>
+
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#e9f1fb",
+        primaryTextColor: "#172033",
+        primaryBorderColor: "#2f5f95",
+        lineColor: "#2f5f95",
+        secondaryColor: "#f8fafc",
+        tertiaryColor: "#ffffff",
+        fontFamily: "Arial"
+      }
+    });
+  </script>
+</body>
+</html>
+
