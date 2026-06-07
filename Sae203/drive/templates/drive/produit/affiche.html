@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Fiche produit</title>
+</head>
+<body>
+    <h1>{{ produit.nom }}</h1>
+    <p>Marque : {{ produit.marque }}</p>
+    <p>Prix : {{ produit.prix }} euros</p>
+    <p>Date de peremption : {{ produit.date_peremption|date:"d/m/Y" }}</p>
+    <p>Photo : {{ produit.photo }}</p>
+    <p>Categorie : {{ produit.categorie }}</p>
+    <a href="/drive/produits/">retour</a>
+</body>
+</html>

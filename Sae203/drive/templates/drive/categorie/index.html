@@ -1,0 +1,25 @@
+{% extends 'drive/main.html' %}
+
+{% block title %}
+Categories
+{% endblock %}
+
+{% block content %}
+<h2>Liste des categories</h2>
+<a href="/drive/ajoutcategorie/">Ajouter une categorie</a>
+
+{% if erreur %}
+    <p>{{ erreur }}</p>
+{% endif %}
+
+<ol>
+    {% for c in liste %}
+        <li>
+            {{ c }}
+            <a href="/drive/affichecategorie/{{ c.id }}/">afficher les details</a>
+            <a href="/drive/deletecategorie/{{ c.id }}/">effacer</a>
+            <a href="/drive/updatecategorie/{{ c.id }}/">mise a jour</a>
+        </li>
+    {% endfor %}
+</ol>
+{% endblock %}

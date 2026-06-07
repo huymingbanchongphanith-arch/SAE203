@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Import produits CSV</title>
+</head>
+<body>
+    <h1>Importer des produits avec un fichier CSV</h1>
+
+    <p>Structure attendue avec separateur point-virgule :</p>
+    <pre>nom;date_peremption;photo;marque;prix;categorie_id</pre>
+    <p>Exemple :</p>
+    <pre>Compote pomme;2026-12-10;compote.jpg;Andros;2.45;1</pre>
+
+    <form method="post" action="/drive/traitementimportproduitscsv/" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="importer">
+    </form>
+</body>
+</html>

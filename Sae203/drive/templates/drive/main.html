@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Drive{% endblock %}</title>
+</head>
+<body>
+    <h1>Gestion du Drive</h1>
+    <nav>
+        <a href="/drive/">Accueil</a>
+        <a href="/drive/categories/">Categories</a>
+        <a href="/drive/produits/">Produits</a>
+        <a href="/drive/importproduitscsv/">Import CSV</a>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'drive/main.html' %}
+
+{% block title %}
+Detail categorie
+{% endblock %}
+
+{% block content %}
+<h2>{{ categorie.nom }}</h2>
+<p>{{ categorie.descriptif }}</p>
+
+<h3>Produits de la categorie</h3>
+<ol>
+    {% for p in liste %}
+        <li>{{ p.nom }} - {{ p.prix }} euros</li>
+    {% endfor %}
+</ol>
+{% endblock %}
