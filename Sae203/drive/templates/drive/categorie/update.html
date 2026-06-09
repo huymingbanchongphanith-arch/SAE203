@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Mise a jour categorie</title>
-</head>
-<body>
-    <form method="post" action="/drive/traitementupdatecategorie/{{ id }}/">
-        {% csrf_token %}
-        {{ form.as_ul }}
-        <input type="submit" value="envoyer les donnees">
-    </form>
-</body>
-</html>
+{% extends 'drive/main.html' %}
+
+{% block title %}
+Mise a jour categorie
+{% endblock %}
+
+{% block content %}
+<h2>Mise a jour d'une categorie</h2>
+<form method="post" action="/drive/traitementupdatecategorie/{{ id }}/">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="envoyer les donnees">
+</form>
+{% endblock %}

@@ -2,22 +2,28 @@
 <html lang="fr">
 
 <head>
-
+    {% load static %}
     <meta charset="UTF-8">
     <title>{% block title %}Drive{% endblock %}</title>
-
+    <link rel="stylesheet" href="{% static 'drive/css/style.css' %}">
 </head>
 <body>
-    <h1>Gestion du Drive</h1>
+    <header>
+        <h1>Gestion du Drive</h1>
+        <p>Application de gestion des commandes et des produits</p>
+    </header>
     <nav>
         <a href="/drive/">Accueil</a>
         <a href="/drive/categories/">Categories</a>
         <a href="/drive/clients/">Clients</a>
         <a href="/drive/produits/">Produits</a>
+        <a href="/drive/commandes/">Commandes</a>
         <a href="/drive/importproduitscsv/">Import CSV</a>
     </nav>
 
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

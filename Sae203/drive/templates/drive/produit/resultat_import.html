@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Resultat import CSV</title>
-</head>
-<body>
-    <h1>Resultat de l'import</h1>
-    <p>Nombre de produits importes : {{ nombre_importes }}</p>
+{% extends 'drive/main.html' %}
 
-    {% if erreurs %}
-        <h2>Erreurs</h2>
-        <ul>
-            {% for erreur in erreurs %}
-                <li>{{ erreur }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+{% block title %}
+Resultat import CSV
+{% endblock %}
 
-    <a href="/drive/produits/">voir les produits</a>
-</body>
-</html>
+{% block content %}
+<h2>Resultat de l'import</h2>
+<p>Nombre de produits importes : {{ nombre_importes }}</p>
+
+{% if erreurs %}
+    <h3>Erreurs</h3>
+    <ul>
+        {% for erreur in erreurs %}
+            <li>{{ erreur }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<a href="/drive/produits/">voir les produits</a>
+{% endblock %}
