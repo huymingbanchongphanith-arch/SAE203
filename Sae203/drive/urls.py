@@ -19,4 +19,13 @@ urlpatterns = [
     path("traitementupdateproduit/<int:id>/", produit_views.traitementupdate),
     path("importproduitscsv/", produit_views.import_csv),
     path("traitementimportproduitscsv/", produit_views.traitement_import_csv),
+
+    #commandes
+    path("commandes/", commande_views.index),
+    path("ajoutcommande/", commande_views.ajout),
+    path("traitementcommande/", commande_views.traitement),
+    path("affichecommande/<int:id>/", commande_views.affiche),
+    path("deletecommande/<int:id>/", commande_views.delete),
+    path("updatecommande/<int:id>/", commande_views.update),
+    path("traitementupdatecommande/<int:id>/", commande_views.traitementupdate),
 ]
