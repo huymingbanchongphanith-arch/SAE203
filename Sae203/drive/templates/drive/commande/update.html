@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Modifier une commande</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'drive/css/style.css' %}">
 </head>
 <body>
     <h1>Modifier la commande n°{{ commande.numero }}</h1>

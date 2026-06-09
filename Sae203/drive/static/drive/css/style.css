@@ -63,3 +63,115 @@ footer{
     padding:20px;
     color:#777;
 }
+
+/* Titre principal */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+h2 {
+    color: #34495e;
+    margin: 20px 0 15px 0;
+}
+h3 {
+    color: #34495e;
+    margin: 15px 0;
+}
+
+
+/* Navigation */
+nav {
+    background: #2c3e50;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #3498db;
+}
+
+/* Liens généraux */
+a {
+    color: #2980b9;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+* Formulaires */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+th {
+    background: #2c3e50;
+    color: white;
+    padding: 12px;
+}
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+tr:hover {
+    background: #f5f5f5;
+}
+/* Listes */
+ol, ul {
+    margin-top: 15px;
+    margin-left: 25px;
+}
+li {
+    margin-bottom: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    list-style-position: inside;
+}
+/* Messages d'erreur */
+.erreur {
+    color: red;
+    font-weight: bold;
+    margin: 10px 0;
+}
+/* Totaux commandes */
+strong {
+    color: #27ae60;
+    font-size: 18px;
+}
+/* Espacement des paragraphes */
+p {
+    margin-bottom: 10px;
+}

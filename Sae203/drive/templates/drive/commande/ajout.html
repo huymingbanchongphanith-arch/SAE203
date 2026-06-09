@@ -1,9 +1,13 @@
-{% extends 'drive/main.html' %}
-{% block title %}
-Ajouter une commande
-{% endblock %}
-{% block content %}
-  <h1>Nouvelle commande</h1>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter une commande</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'drive/css/style.css' %}">
+</head>
+<body>
+    <h1>Nouvelle commande</h1>
     {% if form.non_field_errors %}
         <p>{{ form.non_field_errors }}</p>
     {% endif %}
@@ -38,4 +42,5 @@ Ajouter une commande
         <br>
         <input type="submit" value="envoyer les donnees">
     </form>
-{% endblock %}
+</body>
+</html>
