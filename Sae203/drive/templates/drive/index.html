@@ -7,14 +7,39 @@
     <link rel="stylesheet" href="{% static 'drive/css/style.css' %}">
 </head>
 <body>
+   <header>
     <h1>Gestion du Drive</h1>
     <p>Application de gestion des commandes et des produits</p>
-    <ul>
-        <li><a href="/drive/categories/">CRUD categories</a></li>
-        <li><a href="/drive/produits/">CRUD produits</a></li>
-        <li><a href="/drive/importproduitscsv/">Import produits CSV</a></li>
-        <li><a href="/drive/commandes/">CRUD commande</a></li>
+</header>
+<div class="container">
+    <div class="menu">
+        <div class="card">
+            <h2>Catégories</h2>
+            <p>Gestion des catégories.</p>
+            <a href="/drive/categories/" class="btn">Accéder</a>
+        </div>
+        <div class="card">
+            <h2>Produits</h2>
+            <p>Gestion des produits.</p>
+            <a href="/drive/produits/" class="btn">Accéder</a>
+        </div>
+        <div class="card">
+            <h2> Clients</h2>
+            <p>Gestion des clients.</p>
+            <a href="/drive/clients/" class="btn">Accéder</a>
+        </div>
+        <div class="card">
+            <h2>Commandes</h2>
+            <p>Gestion des commandes.</p>
+            <a href="/drive/commandes/" class="btn">Accéder</a>
+        </div>
+        <div class="card">
+            <h2>Import CSV</h2>
+            <p>Importer des produits.</p>
+            <a href="/drive/importproduitscsv/" class="btn">Importer</a>
+        </div>
+    </div>
+</div>
 
-    </ul>
 </body>
 </html>
