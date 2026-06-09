@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils import timezone
 
+from .forms import CommandeForm
 from . import models
 
 
@@ -15,12 +16,12 @@ def ajout(request):
     """Affiche le formulaire de creation d'une commande.
     On affiche tous les clients et tous les produits avec un champ quantite.
     """
-    clients = models.Client.objects.all().order_by("nom", "prenom")
+    form = CommandeForm()
     produits = models.Produit.objects.select_related("categorie").all().order_by("categorie__nom", "nom")
     return render(
         request,
         "drive/commande/ajout.html",
-        {"clients": clients, "produits": produits},
+        {"form": form, "produits": produits},
     )
 
 
@@ -28,7 +29,7 @@ def traitement(request):
     """Traite la soumission du formulaire de creation de commande.
     Cree la commande puis les lignes de commande pour les produits dont la quantite > 0.
     """
-    client_id = request.POST.get("client_id")
+    form = CommandeForm(request.POST)
     produit_ids = request.POST.getlist("produit_id")
     quantites = request.POST.getlist("quantite")
 
@@ -39,18 +40,17 @@ def traitement(request):
         if qte.isdigit() and int(qte) > 0
     ]
 
-    if not client_id or not lignes_valides:
-        clients = models.Client.objects.all().order_by("nom", "prenom")
+    if not form.is_valid() or not lignes_valides:
         produits = models.Produit.objects.select_related("categorie").all().order_by("categorie__nom", "nom")
         erreur = "Veuillez choisir un client et au moins un produit avec une quantite superieure a 0."
         return render(
             request,
             "drive/commande/ajout.html",
-            {"clients": clients, "produits": produits, "erreur": erreur},
+            {"form": form, "produits": produits, "erreur": erreur},
         )
 
     # Creation de la commande
-    client = models.Client.objects.get(pk=client_id)
+    client = form.cleaned_data["client"]
     commande = models.Commande(client=client, date_commande=timezone.now())
     commande.save()
 
@@ -88,7 +88,7 @@ def delete(request, id):
 def update(request, id):
     """Affiche le formulaire de modification d'une commande (changement de client)."""
     commande = models.Commande.objects.select_related("client").get(pk=id)
-    clients = models.Client.objects.all().order_by("nom", "prenom")
+    form = CommandeForm(initial={"client": commande.client})
     lignes = models.LigneCommande.objects.filter(commande=commande).select_related("produit")
     produits = models.Produit.objects.select_related("categorie").all().order_by("categorie__nom", "nom")
 
@@ -100,7 +100,7 @@ def update(request, id):
         "drive/commande/update.html",
         {
             "commande": commande,
-            "clients": clients,
+            "form": form,
             "produits": produits,
             "quantites_actuelles": quantites_actuelles,
         },
@@ -109,7 +109,7 @@ def update(request, id):
 
 def traitementupdate(request, id):
     """Traite la modification d'une commande : recrée toutes les lignes."""
-    client_id = request.POST.get("client_id")
+    form = CommandeForm(request.POST)
     produit_ids = request.POST.getlist("produit_id")
     quantites = request.POST.getlist("quantite")
 
@@ -119,12 +119,12 @@ def traitementupdate(request, id):
         if qte.isdigit() and int(qte) > 0
     ]
 
-    if not client_id or not lignes_valides:
+    if not form.is_valid() or not lignes_valides:
         return HttpResponseRedirect(f"/drive/updatecommande/{id}/")
 
     # Mise a jour de la commande
     commande = models.Commande.objects.get(pk=id)
-    commande.client = models.Client.objects.get(pk=client_id)
+    commande.client = form.cleaned_data["client"]
     commande.save()
 
     # Suppression des anciennes lignes et recreation
