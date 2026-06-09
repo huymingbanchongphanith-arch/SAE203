@@ -1,5 +1,6 @@
 from django.urls import path
-from . import categorie_views, produit_views, views
+from . import categorie_views, produit_views, commande_views, views
+
 
 urlpatterns = [
     path("", views.index),
@@ -28,4 +29,5 @@ urlpatterns = [
     path("deletecommande/<int:id>/", commande_views.delete),
     path("updatecommande/<int:id>/", commande_views.update),
     path("traitementupdatecommande/<int:id>/", commande_views.traitementupdate),
+
 ]
