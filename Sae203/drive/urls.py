@@ -1,6 +1,5 @@
 from django.urls import path
-from . import categorie_views, produit_views, commande_views, views
-
+from . import categorie_views, client_views, commande_views, produit_views, views
 
 urlpatterns = [
     path("", views.index),
@@ -11,6 +10,13 @@ urlpatterns = [
     path("deletecategorie/<int:id>/", categorie_views.delete),
     path("updatecategorie/<int:id>/", categorie_views.update),
     path("traitementupdatecategorie/<int:id>/", categorie_views.traitementupdate),
+    path("clients/", client_views.index),
+    path("ajoutclient/", client_views.ajout),
+    path("traitementclient/", client_views.traitement),
+    path("afficheclient/<int:id>/", client_views.affiche),
+    path("deleteclient/<int:id>/", client_views.delete),
+    path("updateclient/<int:id>/", client_views.update),
+    path("traitementupdateclient/<int:id>/", client_views.traitementupdate),
     path("produits/", produit_views.index),
     path("ajoutproduit/", produit_views.ajout),
     path("traitementproduit/", produit_views.traitement),

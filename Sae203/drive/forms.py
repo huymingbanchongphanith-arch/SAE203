@@ -32,6 +32,22 @@ class ProduitForm(ModelForm):
         }
 
 
+class ClientForm(ModelForm):
+    class Meta:
+        model = models.Client
+        fields = ("nom", "prenom", "date_inscription", "adresse")
+        labels = {
+            "nom": _("Nom"),
+            "prenom": _("Prenom"),
+            "date_inscription": _("Date d'inscription"),
+            "adresse": _("Adresse"),
+        }
+        localized_fields = ("date_inscription",)
+        widgets = {
+            "date_inscription": forms.DateInput(attrs={"type": "date"}),
+        }
+
+
 class ImportProduitCsvForm(forms.Form):
     fichier = forms.FileField(label="Fichier CSV")
 

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un client</title>
+</head>
+<body>
+    <form method="post" action="/drive/traitementclient/">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="envoyer les donnees">
+    </form>
+</body>
+</html>
