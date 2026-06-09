@@ -1,0 +1,25 @@
+{% extends 'drive/main.html' %}
+
+{% block title %}
+Clients
+{% endblock %}
+
+{% block content %}
+<h2>Liste des clients</h2>
+<a href="/drive/ajoutclient/">Ajouter un client</a>
+
+{% if erreur %}
+    <p>{{ erreur }}</p>
+{% endif %}
+
+<ol>
+    {% for c in liste %}
+        <li>
+            {{ c }}
+            <a href="/drive/afficheclient/{{ c.id }}/">afficher les details</a>
+            <a href="/drive/deleteclient/{{ c.id }}/">effacer</a>
+            <a href="/drive/updateclient/{{ c.id }}/">mise a jour</a>
+        </li>
+    {% endfor %}
+</ol>
+{% endblock %}

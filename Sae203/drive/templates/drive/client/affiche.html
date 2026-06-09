@@ -1,0 +1,18 @@
+{% extends 'drive/main.html' %}
+
+{% block title %}
+Detail client
+{% endblock %}
+
+{% block content %}
+<h2>{{ client.prenom }} {{ client.nom }}</h2>
+<p>Date d'inscription : {{ client.date_inscription|date:"d/m/Y" }}</p>
+<p>Adresse : {{ client.adresse }}</p>
+
+<h3>Commandes du client</h3>
+<ol>
+    {% for commande in liste %}
+        <li>Commande numero {{ commande.numero }} - {{ commande.date_commande|date:"d/m/Y H:i" }}</li>
+    {% endfor %}
+</ol>
+{% endblock %}
