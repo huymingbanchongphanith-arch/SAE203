@@ -26,7 +26,6 @@ class ProduitForm(ModelForm):
             "prix": _("Prix"),
             "categorie": _("Categorie"),
         }
-        localized_fields = ("date_peremption",)
         widgets = {
             "date_peremption": forms.DateInput(attrs={"type": "date"}),
         }
