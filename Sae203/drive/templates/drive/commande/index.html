@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Commandes</title>
+</head>
+<body>
+    <h1>Gestion du Drive</h1>
+    <ul>
+        <li><a href="/drive/categories/">CRUD categories</a></li>
+        <li><a href="/drive/produits/">CRUD produits</a></li>
+        <li><a href="/drive/importproduitscsv/">Import produits CSV</a></li>
+        <li><a href="/drive/clients/">CRUD clients</a></li>
+        <li><a href="/drive/commandes/">CRUD commandes</a></li>
+    </ul>
+    <h2>Liste des commandes</h2>
+    <a href="/drive/ajoutcommande/">Ajouter une commande</a>
+    {% if erreur %}
+        <p>{{ erreur }}</p>
+    {% endif %}
+    <ol>
+        {% for co in liste %}
+            <li>
+                Commande n°{{ co.numero }} - {{ co.client.prenom }} {{ co.client.nom }} - {{ co.date_commande|date:"d/m/Y" }}
+                <a href="/drive/affichecommande/{{ co.numero }}/">afficher les details</a>
+                <a href="/drive/deletecommande/{{ co.numero }}/">effacer</a>
+                <a href="/drive/updatecommande/{{ co.numero }}/">mise a jour</a>
+            </li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

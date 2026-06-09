@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Fiche commande</title>
+</head>
+<body>
+    <h1>Commande n°{{ commande.numero }}</h1>
+    <p>Date : {{ commande.date_commande|date:"d/m/Y H:i" }}</p>
+    <p>Client : {{ commande.client.prenom }} {{ commande.client.nom }}</p>
+    <p>Adresse : {{ commande.client.adresse }}</p>
+    <h2>Produits commandes</h2>
+    <table border="1">
+        <tr>
+            <th>Produit</th>
+            <th>Marque</th>
+            <th>Categorie</th>
+            <th>Prix unitaire</th>
+            <th>Quantite</th>
+            <th>Total ligne</th>
+        </tr>
+        {% for ligne in lignes %}
+        <tr>
+            <td>{{ ligne.produit.nom }}</td>
+            <td>{{ ligne.produit.marque }}</td>
+            <td>{{ ligne.produit.categorie.nom }}</td>
+            <td>{{ ligne.produit.prix }} euros</td>
+            <td>{{ ligne.quantite }}</td>
+            <td>{{ ligne.total_ligne }} euros</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><strong>Total de la commande : {{ total }} euros</strong></p>
+    <a href="/drive/commandes/">retour</a>
+</body>
+</html>

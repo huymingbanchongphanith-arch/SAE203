@@ -34,3 +34,20 @@ class ProduitForm(ModelForm):
 
 class ImportProduitCsvForm(forms.Form):
     fichier = forms.FileField(label="Fichier CSV")
+
+
+class CommandeForm(forms.Form):
+    client = forms.ModelChoiceField(
+        queryset=models.Client.objects.all().order_by("nom", "prenom"),
+        label="Client",
+        empty_label="-- Sélectionner un client --",
+        widget=forms.Select(attrs={"style": "padding:6px; font-size:1em;"}),
+    )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        client = cleaned_data.get("client")
+        if not client:
+            raise forms.ValidationError("Veuillez sélectionner un client.")
+        return cleaned_data
+
