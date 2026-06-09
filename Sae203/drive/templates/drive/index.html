@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Drive</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'drive/style.css' %}">
-</head>
-<body>
-   <header>
-    <h1>Gestion du Drive</h1>
-    <p>Application de gestion des commandes et des produits</p>
-</header>
-<div class="container">
+{% extends 'drive/main.html' %}
+
+{% block title %}Drive{% endblock %}
+
+{% block content %}
     <div class="menu">
         <div class="card">
             <h2>Categories</h2>
@@ -39,7 +30,4 @@
             <a href="/drive/importproduitscsv/" class="btn">Importer</a>
         </div>
     </div>
-</div>
-
-</body>
-</html>
+{% endblock %}
