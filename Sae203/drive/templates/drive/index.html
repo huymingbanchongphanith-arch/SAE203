@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Drive</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'drive/css/style.css' %}">
 </head>
 <body>
     <h1>Gestion du Drive</h1>
+    <p>Application de gestion des commandes et des produits</p>
     <ul>
         <li><a href="/drive/categories/">CRUD categories</a></li>
         <li><a href="/drive/produits/">CRUD produits</a></li>
         <li><a href="/drive/importproduitscsv/">Import produits CSV</a></li>
+        <li><a href="/drive/commandes/">CRUD commande</a></li>
+
     </ul>
 </body>
 </html>
