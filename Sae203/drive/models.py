@@ -76,3 +76,6 @@ class LigneCommande(models.Model):
 
     def __str__(self):
         return f"{self.produit} x {self.quantite}"
+
+    def total_ligne(self):
+        return self.quantite * self.produit.prix
