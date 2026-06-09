@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>Fiche commande</title>
-     <link rel="stylesheet" href="{% static 'drive/css/style.css' %}">
-</head>
-<body>
+{% extends 'drive/main.html' %}
+{% block title %}
+Fiche commande
+{% endblock %}
+{% block content %}
     <h1>Commande n°{{ commande.numero }}</h1>
     <p>Date : {{ commande.date_commande|date:"d/m/Y H:i" }}</p>
     <p>Client : {{ commande.client.prenom }} {{ commande.client.nom }}</p>
@@ -34,5 +30,4 @@
     </table>
     <p><strong>Total de la commande : {{ total }} euros</strong></p>
     <a href="/drive/commandes/">retour</a>
-</body>
-</html>
+{% endblock %}
