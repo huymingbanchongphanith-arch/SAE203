@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,6 +5,7 @@
     <title>Fiche commande</title>
 </head>
 <body>
+    {% load static %}
     <h1>Commande n°{{ commande.numero }}</h1>
     <p>Date : {{ commande.date_commande|date:"d/m/Y H:i" }}</p>
     <p>Client : {{ commande.client.prenom }} {{ commande.client.nom }}</p>
