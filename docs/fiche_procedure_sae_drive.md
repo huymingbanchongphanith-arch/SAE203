@@ -88,32 +88,7 @@ Ce script supprime l'ancienne base si elle existe, recree la base `sae_drive`, c
 
 En production, il faudrait eviter de supprimer la base automatiquement, mais pour une SAE et une demonstration, cela permet de repartir d'une base propre.
 
-## 7. Configuration Django
-
-La connexion entre Django et MySQL est configuree dans :
-
-```text
-Sae203/Sae203/settings.py
-```
-
-Configuration utilisee :
-
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sae_drive',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-```
-
-Cette configuration indique a Django d'utiliser le moteur MySQL et la base `sae_drive`.
-
-## 8. Installation de l'application
+## 7. Installation de l'application
 
 Recuperer le projet :
 
@@ -140,7 +115,7 @@ Verifier que le projet ne contient pas d'erreur Django :
 python manage.py check
 ```
 
-## 9. Lancement du site
+## 8. Lancement du site
 
 En local :
 
@@ -166,7 +141,7 @@ ou, sur la VM :
 http://IP_DE_LA_VM:8000/drive/
 ```
 
-## 10. Tests a effectuer
+## 9. Tests a effectuer
 
 Avant le rendu, les tests suivants doivent etre realises :
 
@@ -183,7 +158,7 @@ Avant le rendu, les tests suivants doivent etre realises :
 - afficher une fiche commande avec le total ;
 - verifier que la base MySQL contient bien les donnees.
 
-## 11. Repartition des taches
+## 10. Repartition des taches
 
 | Etudiant | Taches principales |
 | --- | --- |
@@ -191,6 +166,6 @@ Avant le rendu, les tests suivants doivent etre realises :
 | Etudiant 2 | VM Linux, installation des services, configuration MySQL, CRUD clients, validation formulaires |
 | Etudiant 3 | Structure du site, navigation, CRUD commandes, gestion des quantites, fiche commande avec total |
 
-## 12. Conclusion
+## 11. Conclusion
 
 Le projet permet de manipuler une base de donnees MySQL depuis une interface web Django. Il repond au besoin d'un Drive en proposant une gestion des produits, des clients et des commandes. Le depot GitHub contient le code de l'application, le script SQL, le schema relationnel, le planning et la documentation de deploiement.

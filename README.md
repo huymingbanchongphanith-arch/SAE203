@@ -108,29 +108,6 @@ Adresse de test :
 http://127.0.0.1:8000/drive/
 ```
 
-## Configuration Django / MySQL
-
-Le lien entre Django et MySQL se trouve dans :
-
-```text
-Sae203/Sae203/settings.py
-```
-
-Configuration utilisee :
-
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sae_drive',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-```
-
 ## Repartition des taches
 
 | Etudiant | Partie principale |
