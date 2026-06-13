@@ -41,7 +41,6 @@ class ClientForm(ModelForm):
             "date_inscription": _("Date d'inscription"),
             "adresse": _("Adresse"),
         }
-        localized_fields = ("date_inscription",)
         widgets = {
             "date_inscription": forms.DateInput(attrs={"type": "date"}),
         }

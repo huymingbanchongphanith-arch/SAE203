@@ -1,0 +1,41 @@
+erDiagram
+    CATEGORIE ||--o{ PRODUIT : contient
+    CLIENT ||--o{ COMMANDE : passe
+    COMMANDE ||--o{ LIGNE_COMMANDE : contient
+    PRODUIT ||--o{ LIGNE_COMMANDE : est_commande
+
+    CATEGORIE {
+        int id PK
+        varchar nom
+        text descriptif
+    }
+
+    PRODUIT {
+        int id PK
+        varchar nom
+        date date_peremption
+        varchar photo
+        varchar marque
+        decimal prix
+        int categorie_id FK
+    }
+
+    CLIENT {
+        int id PK
+        varchar nom
+        varchar prenom
+        date date_inscription
+        varchar adresse
+    }
+
+    COMMANDE {
+        int numero PK
+        int client_id FK
+        datetime date_commande
+    }
+
+    LIGNE_COMMANDE {
+        int commande_numero PK,FK
+        int produit_id PK,FK
+        int quantite
+    }
