@@ -1,1 +1,64 @@
+Configuration du fichier /etc/apache2/sites-available/sae203.conf:
 
+<VirtualHost *:80>
+
+    ServerName localhost
+
+    WSGIDaemonProcess sae203 python-home=/home/toto/SAE203/Sae203/venv python-path=/home/toto/SAE203/Sae203
+
+    WSGIProcessGroup sae203
+
+    WSGIScriptAlias / /home/toto/SAE203/Sae203/Sae203/wsgi.py
+
+    <Directory /home/toto/SAE203/Sae203/Sae203>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    Alias /static /home/toto/SAE203/drive/static
+
+    <Directory /home/toto/SAE203/drive/static>
+        Require all granted
+    </Directory>
+
+</VirtualHost>
+
+Configuration du fichier /home/toto/SAE203/Sae203/Sae203/settings.py : 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sae_drive',
+        'USER': 'root',
+        'PASSWORD': 'root123',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+
+
+Configuration du fichier /home/toto/SAE203/Sae203/Sae203/wsgi.py :
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault(
+    'DJANGO_SETTINGS_MODULE',
+    'Sae203.settings'
+)
+
+application = get_wsgi_application()
+
+
+
+
+Base MariaDB
+
+mysql -u root -p
+
+ALTER USER 'root'@'localhost'
+IDENTIFIED BY 'root123';
+
+FLUSH PRIVILEGES;
